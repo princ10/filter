@@ -1,0 +1,68 @@
+
+
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      img{
+          border-radius: 90%;
+          height: 100px;
+          width: 100px;
+      }
+      .form-control{
+          margin: 10px 0;
+          padding: 10px;
+
+      }
+    </style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="col-md-4">
+            <input class="form-control col-md-3" type="text" ng-model="search.name" placeholder="search players name"/>
+        </div>
+        <div class="col-md-4">
+                <input class="form-control col-md-3" type="text" ng-model="search.id" placeholder="search id"/>
+        </div>
+            <div class="col-md-4">
+                    <input class="form-control col-md-3" type="text" ng-model="search.photo" placeholder="search photo"/>
+            </div>
+                <div class="col-md-4">
+                        <input class="form-control col-md-3" type="text" ng-model="search.runs" placeholder="search players"/>
+                </div>
+                <div ng-controller="myCtr">
+                <table class="table table-striped table-hover">
+                     <thead>
+                         <tr>
+                             <th>Name</th>
+                             <th>id</th>
+                             <th>photo</th>
+                             <th>runs</th>
+                         </tr>
+                     </thead>
+                     <tbody>
+                     <tr ng-repeat="player in players | filter:search">
+                         <td>{{player.name | lowercase}}</td>
+                         <td>{{player.id}}</td>
+                         <td><img class="img-rounded" ng-src="{{player.photo}}"/></td>
+                         <td>{{player.runs | currency:"₹":0}}</td>
+                     </tr>
+                     </tbody>
+                </table>
+                </div>
+    </div>
+</body>
+</html>
